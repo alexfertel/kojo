@@ -1,0 +1,11 @@
+# Python files
+__pycache__/
+*.pyc
+
+# Logs
+*.json
+logs/
+
+# IDE
+.vscode/
+.idea
