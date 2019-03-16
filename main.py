@@ -2,8 +2,14 @@
 from tests import expogen
 from src.kitchen import Kitchen
 
+import sys
+
 def main():
-    k = Kitchen()
+    up = 0
+    if len(sys.argv) > 1:
+        up = int(sys.argv[1])
+
+    k = Kitchen(up)
     k.run()
 
 def tests():
