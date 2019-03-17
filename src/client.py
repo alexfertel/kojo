@@ -1,7 +1,5 @@
 from numpy.random import randint, random
-
-SANDWICH    = (3 * 60, 5 * 60)  # Food 0
-SUSHI       = (5 * 60, 8 * 60)  # Food 1
+from config import SANDWICH, SUSHI
 
 class Client:
     def __init__(self, index, food):

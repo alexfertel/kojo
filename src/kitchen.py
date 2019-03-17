@@ -3,12 +3,7 @@ from datetime import datetime, timedelta
 from .client import Client
 from .event import Event
 from .expogen import Exp
-
-import os
-
-BIG_T           = 11 * 3600  # Closing time of the kitchen
-EMPLOYEES_COUNT = 2          # I think this is self-explanatory
-LAMBDA          = 1 * 120    # Exponential Random Variable Mean, five minutes
+from config import BIG_T, EMPLOYEES_COUNT, LAMBDA, LOG_FILE
 
 def timefsec(t):
     seconds = timedelta(seconds=t + 10 * 3600)
@@ -79,7 +74,7 @@ class Kitchen:
 
     def run(self):
         while True:
-            print(self.t, self.state['client_count'])
+            # print(self.t, self.state['client_count'])
             self.log(str(self))
 
             if self.up:
@@ -151,7 +146,7 @@ class Kitchen:
         self.log(result)
 
     def log(self, *args):
-        log_file = 'kitchen_simulation'
+        log_file = LOG_FILE
         with open(f'logs/{log_file}.txt', '+a') as fd:
             for arg in args:
                 fd.write(arg)

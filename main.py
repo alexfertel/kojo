@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-from tests import expogen
 from src.kitchen import Kitchen
+from analysis.efficiency import analyze
 
 import sys
 
@@ -12,9 +12,10 @@ def main():
     k = Kitchen(up)
     k.run()
 
-def tests():
-    print(list(expogen.itShouldGenerateExponentialRandomVariables(1)))
+def main1():
+    import sys
+    analyze(int(sys.argv[1]))
 
 if __name__ == "__main__":
-    main()
+    main1()
 
