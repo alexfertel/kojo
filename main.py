@@ -1,21 +1,40 @@
 #!/usr/bin/python3
 from src.kitchen import Kitchen
+from src.utils import set_env
 from analysis.efficiency import analyze
+from analysis.means import sample
 
-import sys
+import fire
 
-def main():
-    up = 0
-    if len(sys.argv) > 1:
-        up = int(sys.argv[1])
+def one(up=0):
+    """
+    :param: up - If truthy will simulate with `EMPLOYEES_COUNT + 1` employees.
+    """
+    from config import RUNS, LOG_FILE
+    set_env("RUNS", RUNS + 1)
 
     k = Kitchen(up)
     k.run()
 
-def main1():
-    import sys
-    analyze(int(sys.argv[1]))
+    with open(f"logs/{LOG_FILE}.txt") as f:
+        print(f.read())
+
+def more(n):
+    """
+    :param: n - Number of simulations to make.
+    """
+    analyze(n)
+
+def results(lamb):
+    """
+    :param: lamb - `.csv` file to check, which is named after the `LAMBDA` param.
+    """
+    sample(lamb)
 
 if __name__ == "__main__":
-    main1()
+    fire.Fire({
+        "one": one,
+        "more": more,
+        "results": results
+    })
 

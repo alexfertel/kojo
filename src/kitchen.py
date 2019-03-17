@@ -3,7 +3,8 @@ from datetime import datetime, timedelta
 from .client import Client
 from .event import Event
 from .expogen import Exp
-from config import BIG_T, EMPLOYEES_COUNT, LAMBDA, LOG_FILE
+from .utils import get_env
+from config import BIG_T, EMPLOYEES_COUNT, LAMBDA
 
 def timefsec(t):
     seconds = timedelta(seconds=t + 10 * 3600)
@@ -146,7 +147,7 @@ class Kitchen:
         self.log(result)
 
     def log(self, *args):
-        log_file = LOG_FILE
+        log_file = get_env("LOG_FILE")[1:-1]
         with open(f'logs/{log_file}.txt', '+a') as fd:
             for arg in args:
                 fd.write(arg)

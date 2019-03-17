@@ -9,3 +9,4 @@ logs/
 # IDE
 .vscode/
 .idea
+results/*.csv
