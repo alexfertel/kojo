@@ -33,6 +33,9 @@ class Kitchen:
         # Handle third employee
         self.three = 0
 
+        # Is the kitchen closing?
+        self.closing = 0
+
         # Init heapq
         self.events = []
 
@@ -81,9 +84,13 @@ class Kitchen:
             if self.up:
                 self.preprocess()
 
+            # Done processing remaining clients after BIG_T
+            if (self.closing & 1) and not len(self.events):
+                break 
+
             curevent = heappop(self.events)
-            if curevent.time > BIG_T:  # We're closing the kitchen
-                break
+            if (self.closing ^ 1) and curevent.time > BIG_T:  # We're closing the kitchen
+                self.closing = 1
 
             self.t = curevent.time
             if curevent.nature == 0:  # Arrival
@@ -103,7 +110,9 @@ class Kitchen:
                 else:  # There's no free employee
                     self.state["queue"].append(curevent.client)  # Enqueue cient
                 
-                self.arrival()  # Generate next arrival
+                if self.closing ^ 1:
+                    self.arrival()  # Generate next arrival
+    
                 self.arrivals.append(self.t)  # Arrival time of client `na` is `t`
                 curevent.client.at = self.t
                 continue

@@ -3,5 +3,5 @@ EMPLOYEES_COUNT = 2                 # I think this is self-explanatory
 SANDWICH        = (3 * 60, 5 * 60)  # Food 0
 SUSHI           = (5 * 60, 8 * 60)  # Food 1
 LAMBDA          = 1 * 200
-LOG_FILE		= "kitchen_681"
-RUNS			= 681
+LOG_FILE		= "kitchen_787"
+RUNS			= 787
