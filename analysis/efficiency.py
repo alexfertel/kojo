@@ -1,10 +1,10 @@
 from src.kitchen import Kitchen
 from src.utils import get_env, set_env
-from config import LAMBDA
+from config import MEAN
 
 
 def analyze(runs):
-    print(f"1 / Lambda is {LAMBDA / 60} minutes")
+    print(f"1 / Lambda is {MEAN / 60} minutes")
     for i in range(runs):
         # Compute next log file
         index = int(get_env("RUNS")) + 1
@@ -34,5 +34,5 @@ def analyze(runs):
         set_env("RUNS", index)
     
         # Save results
-        with open(f"results/{LAMBDA}.csv", "a") as fd:
+        with open(f"results/{MEAN}.csv", "a") as fd:
             fd.write(f"{pdown},{pup}\n")

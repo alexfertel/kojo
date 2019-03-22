@@ -25,11 +25,11 @@ def more(n):
     """
     analyze(n)
 
-def results(lamb):
+def results(mean):
     """
-    :param: lamb - `.csv` file to check, which is named after the `LAMBDA` param.
+    :param: mean - `.csv` file to check, which is named after the `MEAN` param.
     """
-    sample(lamb)
+    sample(mean)
 
 if __name__ == "__main__":
     fire.Fire({

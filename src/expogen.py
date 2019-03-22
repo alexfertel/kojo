@@ -1,11 +1,11 @@
 import numpy as np
 
 class Exp:
-    def __init__(self, lamb):
-        self.lamb = lamb
+    def __init__(self, mean):
+        self.mean = mean
 
     def inverse(self, u):
-        return -self.lamb * np.log(u)
+        return -self.mean * np.log(u)
 
     def generate(self):
         return self.generate_n(1)[0]

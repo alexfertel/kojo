@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-def sample(lamb):
-    with open(f"results/{lamb}.csv") as fd:
+def sample(mean):
+    with open(f"results/{mean}.csv") as fd:
         sample_mean = 0
         length = 0
         for line in fd.readlines():

@@ -4,7 +4,7 @@ This is a simulation of the system described [here](docs/proyectos-eventos-discr
 
 ## Getting Started
 
-We have certain parameters that change the behaviour and therefore the results of this simulation. They may be found in the [config.py](config.py) file and you may change them as needed. One of them, the `LAMBDA` param, dictates how often customers arrive at our kitchen. Depending on this param, the measures requested will variate drastically.
+We have certain parameters that change the behaviour and therefore the results of this simulation. They may be found in the [config.py](config.py) file and you may change them as needed. One of them, the `MEAN` param, dictates how often customers arrive at our kitchen. Depending on this param, the measures requested will variate drastically.
 
 After tweaking the parameters, we have two options:
 

@@ -4,7 +4,7 @@ from .client import Client
 from .event import Event
 from .expogen import Exp
 from .utils import get_env
-from config import BIG_T, EMPLOYEES_COUNT, LAMBDA
+from config import BIG_T, EMPLOYEES_COUNT, MEAN
 
 def timefsec(t):
     seconds = timedelta(seconds=t + 10 * 3600)
@@ -55,11 +55,11 @@ class Kitchen:
 
 
     def arrival(self):
-        lamb = LAMBDA
+        mean = MEAN
         if self.is_peak_hours:
-            lamb = LAMBDA / 2  # As the mean decreases, the exponential parameter increases
+            mean = MEAN / 2  # As the mean decreases, the exponential parameter increases
 
-        delta = Exp(lamb).generate()
+        delta = Exp(mean).generate()
         arrival = Event(self.t + delta, 0)
         
         client = Client.generate(self.state["client_count"])
