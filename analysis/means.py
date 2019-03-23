@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-def sample(mean):
-    with open(f"results/{mean}.csv") as fd:
+def sample(mean, food=50):
+    with open(f"results/{mean}{'' if food == 50 else '_' + str(int(food))}.csv") as fd:
         sample_mean = 0
         length = 0
         for line in fd.readlines():

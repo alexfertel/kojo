@@ -1,15 +1,14 @@
 from src.kitchen import Kitchen
 from src.utils import get_env, set_env
-from config import MEAN
 
-
-def analyze(runs):
-    print(f"1 / Lambda is {MEAN / 60} minutes")
+def analyze(runs, prefix="kitchen"):
+    mean = get_env("MEAN")
+    print(f"1 / Lambda is {mean / 60} minutes")
     for i in range(runs):
         # Compute next log file
         index = int(get_env("RUNS")) + 1
 
-        log_file = f"kitchen_{index}"
+        log_file = f"{prefix}_{index}"
         set_env("LOG_FILE", log_file)
 
         # Normal Kitchen
@@ -34,5 +33,5 @@ def analyze(runs):
         set_env("RUNS", index)
     
         # Save results
-        with open(f"results/{MEAN}.csv", "a") as fd:
+        with open(f"results/{mean}{'_' + prefix if prefix != 'kitchen' else ''}.csv", "a") as fd:
             fd.write(f"{pdown},{pup}\n")

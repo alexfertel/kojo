@@ -3,6 +3,7 @@ from src.kitchen import Kitchen
 from src.utils import set_env
 from analysis.efficiency import analyze
 from analysis.means import sample
+from analysis.parameterizer import explore_means
 from plots.exponential import plot as expoplot
 
 import fire
@@ -33,13 +34,20 @@ def results(mean):
     sample(mean)
 
 def plot(name):
+    """
+    :param: name - Name of the file the plot is being saved.
+    """
     expoplot(name)
+
+def means(step_size=30, runs=100):
+    explore_means(step_size, runs)
 
 if __name__ == "__main__":
     fire.Fire({
         "one": one,
         "more": more,
         "results": results,
-        "expo": plot
+        "expo": plot,
+        "means": means
     })
 
