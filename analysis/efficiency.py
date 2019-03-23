@@ -2,11 +2,12 @@ from src.kitchen import Kitchen
 from src.utils import get_env, set_env
 
 def analyze(runs, prefix="kitchen"):
-    mean = int(get_env("MEAN"))
-    print(f"1 / Lambda is {mean / 60} minutes")
+    mean = int(get_env("MEAN").split('.')[0])
+    food = float(get_env("FOOD"))    
+    print(f"1 / lambda = {mean / 60} minutes, food type proportion = {round(food, 2) * 100}%")
     for i in range(runs):
         # Compute next log file
-        index = int(get_env("RUNS")) + 1
+        index = int(get_env("RUNS").split('.')[0]) + 1
 
         log_file = f"{prefix}_{index}"
         set_env("LOG_FILE", log_file)

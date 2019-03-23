@@ -1,5 +1,6 @@
 from numpy.random import randint, random
-from config import SANDWICH, SUSHI, FOOD
+from src.utils import get_env
+from config import SANDWICH, SUSHI
 
 class Client:
     def __init__(self, index, food):
@@ -29,6 +30,6 @@ class Client:
 
     @staticmethod
     def generate(index):
-        return Client(f"client_{index}", 0 if random() < FOOD else 1)
+        return Client(f"client_{index}", 0 if random() < float(get_env("FOOD")) else 1)
 
     

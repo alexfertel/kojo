@@ -14,7 +14,14 @@ def explore_food(runs=100):
     for i in np.arange(0, 1, .05):
         set_env("FOOD", i)
 
-        analyze(runs, round(i, 2) * 100)
+        analyze(runs, round(round(i, 2) * 100, 0))
 
+def explore(runs=10, sizes=20):
+    for i in np.arange(0, 1, .05):
+        set_env("FOOD", i)
+        for j in np.arange(60, 30 * (sizes + 2), 30):
+            set_env("MEAN", j)
+
+            analyze(runs, round(round(i, 2) * 100, 0))
 
 

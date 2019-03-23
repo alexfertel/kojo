@@ -3,8 +3,9 @@ from src.kitchen import Kitchen
 from src.utils import set_env
 from analysis.efficiency import analyze
 from analysis.means import sample
-from analysis.parameterizer import explore_means, explore_food
+from analysis.parameterizer import explore_means, explore_food, explore
 from plots.exponential import plot as expoplot
+from plots.results import plot as resultsplot
 
 import fire
 
@@ -27,11 +28,12 @@ def more(n):
     """
     analyze(n)
 
-def results(mean):
+def results(mean, food):
     """
-    :param: mean - `.csv` file to check, which is named after the `MEAN` param.
+    :param: mean - `.csv` file to check, which is named after a combination of the `MEAN` and `FOOD` params.
+    :param: food - `.csv` file to check, which is named after a combination of the `MEAN` and `FOOD` params.
     """
-    sample(mean)
+    sample(mean, food)
 
 def plot(name):
     """
@@ -45,6 +47,12 @@ def means(step_size=30, runs=100):
 def food(runs=100):
     explore_food(runs)
 
+def mixed(runs=10):
+    explore(runs)
+
+def three(): 
+    resultsplot()
+
 if __name__ == "__main__":
     fire.Fire({
         "one": one,
@@ -53,5 +61,7 @@ if __name__ == "__main__":
         "expo": plot,
         "means": means,
         "food": food,
+        "mixed": mixed,
+        "three": three,
     })
 
