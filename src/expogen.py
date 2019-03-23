@@ -1,8 +1,8 @@
 import numpy as np
 
 class Exp:
-    def __init__(self, mean):
-        self.mean = mean
+    def __init__(self, mean, lamb=False):
+        self.mean = mean if not lamb else 1 / mean
 
     def inverse(self, u):
         return -self.mean * np.log(u)

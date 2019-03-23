@@ -3,6 +3,7 @@ from src.kitchen import Kitchen
 from src.utils import set_env
 from analysis.efficiency import analyze
 from analysis.means import sample
+from plots.exponential import plot as expoplot
 
 import fire
 
@@ -31,10 +32,14 @@ def results(mean):
     """
     sample(mean)
 
+def plot(name):
+    expoplot(name)
+
 if __name__ == "__main__":
     fire.Fire({
         "one": one,
         "more": more,
-        "results": results
+        "results": results,
+        "expo": plot
     })
 
