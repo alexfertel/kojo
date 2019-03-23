@@ -9,3 +9,5 @@ logs/
 # IDE
 .vscode/
 .idea
+
+paper/*[log, out, aux, gz]

@@ -1,5 +1,5 @@
 from numpy.random import randint, random
-from config import SANDWICH, SUSHI
+from config import SANDWICH, SUSHI, FOOD
 
 class Client:
     def __init__(self, index, food):
@@ -29,6 +29,6 @@ class Client:
 
     @staticmethod
     def generate(index):
-        return Client(f"client_{index}", 0 if random() < .5 else 1)
+        return Client(f"client_{index}", 0 if random() < FOOD else 1)
 
     
