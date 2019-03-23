@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def sample(mean, food=50):
+    sample_mean = 0
     with open(f"results/{mean}{'_' + str(round(food * 100, 2))}.csv") as fd:
-        sample_mean = 0
         length = 0
         for line in fd.readlines():
             pdown, pup = line.strip().split(',')
@@ -10,6 +10,7 @@ def sample(mean, food=50):
         sample_mean /= length
 
         print(sample_mean)
+    return sample_mean
 
 if __name__ == "__main__":
     import sys
