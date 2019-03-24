@@ -7,6 +7,6 @@ WORKDIR /kojo
 
 VOLUME [ "/kojo/logs", "/kojo/results" ]
 
-RUN pip install fire
+RUN pip install fire numpy matplotlib
 
 ENTRYPOINT [ "python3", "main.py" ]
