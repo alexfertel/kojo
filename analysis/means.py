@@ -9,7 +9,7 @@ def sample(mean, food=50):
             length += 1
         sample_mean /= length
 
-        print(sample_mean)
+        # print(sample_mean)
     return sample_mean
 
 if __name__ == "__main__":

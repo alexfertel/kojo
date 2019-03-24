@@ -33,7 +33,7 @@ def results(mean, food):
     :param: mean - `.csv` file to check, which is named after a combination of the `MEAN` and `FOOD` params.
     :param: food - `.csv` file to check, which is named after a combination of the `MEAN` and `FOOD` params.
     """
-    sample(mean, food)
+    print(sample(mean, food))
 
 def plot(name):
     """
@@ -42,12 +42,22 @@ def plot(name):
     expoplot(name)
 
 def means(step_size=30, runs=100):
+    """
+    :param: step_size - Size of the step for the mean expxloration.
+    :param: runs - Number of simulations.
+    """
     explore_means(step_size, runs)
 
 def food(runs=100):
+    """
+    :param: runs - Number of simulations.
+    """
     explore_food(runs)
 
 def mixed(runs=10):
+    """
+    :param: runs - Number of simulations.
+    """
     explore(runs)
 
 def three(): 
